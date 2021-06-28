@@ -8,8 +8,18 @@ const newsSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    date:{
-        type:Date,
-        default:Date.now()
+    categoryID:{
+        type:mongoose.ObjectId,
+        required:true
+    },
+    image:{
+        type:String,
+        required:true
     }
-})
+},{
+    timestamps:true
+}
+)
+
+module.exports = mongoose.model('news',newsSchema)
+
