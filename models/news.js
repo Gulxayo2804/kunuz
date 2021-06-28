@@ -12,11 +12,14 @@ const newsSchema = new mongoose.Schema({
         type:mongoose.ObjectId,
         required:true
     },
-    date:{
-        type:Date,
-        default:Date.now()
+    image:{
+        type:String,
+        required:true
     }
-})
+},{
+    timestamps:true
+}
+)
 
 module.exports = mongoose.model('news',newsSchema)
 
