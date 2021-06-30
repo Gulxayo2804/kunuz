@@ -1,6 +1,27 @@
-const News=require('../models/news')
+const News=require('../models/news');
+const User = require('../models/User');
 
-
+exports.creatUser = async(req,res,next)=>{
+    const result = new User({
+        title:req.body.title,
+        description:req.body.description,
+        categoryID:req.body.categoryID,
+        image:req.body.image
+    })
+    await result.save()
+    .then(()=>{
+        res.status(201).json({
+            succes:true,
+            data:result
+        })
+    })
+    .catch((error)=>{
+        res.status(500).json({
+            succes:false,
+            data:error
+        })
+    })
+}
 exports.getAll=async (req,res,next)=>{
     const news= await News.find()
         .populate('categoryID')
