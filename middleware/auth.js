@@ -17,10 +17,13 @@ exports.protect= (req,res,next)=>{
     }
 }
 
-exports.authorize= (...role)=>{
-    return (req,res,next)=>{
-        if(!role.includes(req.user.role)){
-            res.send(`User role ${req.user.role} is not authorizated to access this route `)
+
+
+exports.authorize = (...roles) => {
+    return (req, res, next) => {
+        this.protect(req, res, next);
+        if (!req.user || !roles.includes(req.user.role)) {
+            return res.status(403).json({ message: "Access denied" })
         }
         next();
     }
