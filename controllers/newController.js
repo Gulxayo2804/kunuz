@@ -42,3 +42,8 @@ exports.getNewsById= async (req,res,next)=>{
         .select({image:1, title:1, description:1, date:1, _id:0})
     res.status(200).send(news)
 }
+exports.deleteNews = async(req,res,next)=>{
+    await News.findByIdAndDelete({_id:req.params.id},(err,data)=>{
+        if(err) throw err
+        res.send("Yangilik o'chirildi ");    })
+}
