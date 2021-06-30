@@ -42,8 +42,22 @@ exports.getNewsById= async (req,res,next)=>{
         .select({image:1, title:1, description:1, date:1, _id:0})
     res.status(200).send(news)
 }
-exports.deleteNews = async(req,res,next)=>{
-    await News.findByIdAndDelete({_id:req.params.id},(err,data)=>{
-        if(err) throw err
-        res.send("Yangilik o'chirildi ");    })
-}
+exports.editnew = async(req,res)=>{
+    const new = await News.findByIdAndUpdate({_id:req.params.id})
+    news.title = req.body.title,
+    news.description = req.body.description,
+    user.categoryID = req.body.categoryID
+    new.save()
+    .then(()=>{
+        res.status(200).json({
+            succes:true,
+            data:user
+        })
+    })
+    .catch((err)=>{
+        res.status(500).json({
+            succes:false,
+            data:err
+        })
+    })
+   }
