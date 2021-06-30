@@ -4,7 +4,7 @@
   "description": "Jamoa bo'lib kun.uz ni yasaymiz",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start":"nodemon index.js"
   },
   "author": "Node Js Team",
   "license": "ISC",
