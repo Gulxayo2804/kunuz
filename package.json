@@ -4,7 +4,7 @@
   "description": "Jamoa bo'lib kun.uz ni yasaymiz",
   "main": "index.js",
   "scripts": {
-    "start":"nodemon index.js"
+    "start": "nodemon index.js"
   },
   "author": "Node Js Team",
   "license": "ISC",
