@@ -7,8 +7,8 @@ const urlencodedParser=bodyParser.urlencoded({extended:false})
 const ejs=require('ejs')
 const path=require('path')
 const layouts=require('express-ejs-layouts');
-const { countReset } = require('console');
 connectDB()
+app.use(layouts)
 const cors=require('cors')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
@@ -26,11 +26,12 @@ app.set('views', './view')
 
 app.get('/',(req,res)=>{
     res.render('index',{
-        title:"Admin",
         layout:'./layout'
     })
 })
 
+
+app.use('/',require('./routes/statisticsRouter') )
 app.use('/new', require('./routes/newRouter'))
 app.use('/user', require('./routes/userRouter'))
 app.use('/category', require('./routes/categoryRouter'))

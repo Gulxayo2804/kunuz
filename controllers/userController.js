@@ -61,6 +61,19 @@ exports.getMe = async(req,res,next)=>{
     res.status(200).send(user);
 }
 
+exports.getAll= async (req,res,next)=>{
+    const users= await User.find()
+        .select({name:1})
+        // res.status(200).json({
+        //     success:true,
+        //     data:users
+        // })
+    res.render('index', {
+        data:users,
+        layout:'./layout'
+    })
+}
+
 exports.deleteUser = async (req,res)=>{
     await User.findByIdAndDelete({_id:req.params.id})
     res.status(200).json({
