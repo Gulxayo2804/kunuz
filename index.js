@@ -30,7 +30,6 @@ app.get('/',(req,res)=>{
     })
 })
 
-
 app.use('/',require('./routes/statisticsRouter') )
 app.use('/new', require('./routes/newRouter'))
 app.use('/user', require('./routes/userRouter'))

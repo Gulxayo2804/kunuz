@@ -4,6 +4,12 @@ const {protect,}=require('../middleware/auth')
 const { superAdmin, admin}=require('../middleware/admin')
 const {createNews, getAll, getNewsById, newsByDate,newsUpdate,deleteNews}=require('../controllers/newController')
 
+router.get('/add', (req,res)=>{
+    res.render('new-page', {
+        layout:'./layout'
+    })
+})
+
 router.post('/add',admin, createNews)
 router.patch('/edit/:id', admin,newsUpdate)
 router.get('/all', getAll)

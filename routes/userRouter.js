@@ -2,7 +2,7 @@ const express=require('express')
 const router=express.Router()
 const { createUser, login, getMe, deleteUser, editUser, getAll }=require('../controllers/userController')
 router.get('/add', (req,res)=>{
-    res.render('pages-register',{
+    res.render('user-page',{
         layout:'./layout'
     })
 })
