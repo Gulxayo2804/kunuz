@@ -24,13 +24,13 @@ app.use('/pages', express.static(__dirname + 'public/pages'))
 app.set('view engine', 'ejs')
 app.set('views', './view')
 
-app.get('/',(req,res)=>{
-    res.render('index',{
-        layout:'./layout'
-    })
-})
+// app.get('/',(req,res)=>{
+//     res.render('index',{
+//         layout:'./layout'
+//     })
+// })
 
-app.use('/',require('./routes/statisticsRouter') )
+app.use('/admin',require('./routes/statisticsRouter') )
 app.use('/new', require('./routes/newRouter'))
 app.use('/user', require('./routes/userRouter'))
 app.use('/category', require('./routes/categoryRouter'))

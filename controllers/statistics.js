@@ -5,24 +5,15 @@ const Category=require('../models/Category')
 exports.userNumber=async (req,res,next)=>{
     const user=await User.find()
         .countDocuments()
-        res.status(200).send(user.toString())
-};
-
-exports.newNumber=async (req,res,next)=>{
+    const users=await User.find({role:'admin'})
     const news=await New.find()
         .countDocuments()
-        res.status(200).send(news.toString())
-};
-
-exports.categoryNumber=async (req,res,next)=>{
     const category=await Category.find()
         .countDocuments()
-        // res.json({
-        //     data:category
-        // })
+       // res.status(200).json({user,news,category})
         res.render('index',{
-            data:category,
+            data:{user,news,category,users},
             layout:'./layout'
         })
-        console.log(category)
-}
+};
+
