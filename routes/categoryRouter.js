@@ -8,6 +8,13 @@ router.get('/add', (req,res)=>{
     })
 })
 
+router.get('/edit', (req,res)=>{
+    res.render('edit-category',{
+        layout:'./layout'
+    })
+})
+
+
 router.post('/add',createCategory);
 router.get('/all',getAll);
 router.patch('/edit/:id',categoryUpdate)

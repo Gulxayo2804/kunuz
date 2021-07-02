@@ -5,7 +5,13 @@ const { superAdmin, admin}=require('../middleware/admin')
 const {createNews, getAll, getNewsById, newsByDate,newsUpdate,deleteNews}=require('../controllers/newController')
 
 router.get('/add', (req,res)=>{
-    res.render('new-page', {
+    res.render('news-page', {
+        layout:'./layout'
+    })
+})
+
+router.get('/edit', (req,res)=>{
+    res.render('edit-news', {
         layout:'./layout'
     })
 })

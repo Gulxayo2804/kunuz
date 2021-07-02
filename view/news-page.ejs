@@ -163,13 +163,11 @@
                             </li>
                             
                             <li>
-                                <a href="javascript:void(0);" class="waves-effect"><i class="icon-paper-sheet"></i><span> Categories <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-                                
-                            </li>
-
+                                <a href="javascript:void(0);" class="waves-effect"><i class="icon-mail-open"></i><span> News <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                            
+                            </li>   
                         </ul>
                         
-
                     </div>
                     <!-- Sidebar -->
                     <div class="clearfix"></div></div>
@@ -188,13 +186,13 @@
                             <div class="page-title-box">
                                 <div class="row align-items-center">
                                     <div class="col-sm-6">
-                                        <h4 class="page-title">Category Elements</h4>
+                                        <h4 class="page-title">News Elements</h4>
                                     </div>
                                     <div class="col-sm-6">
                                         <ol class="breadcrumb float-right">
                                             <li class="breadcrumb-item"><a href="javascript:void(0);">Stexo</a></li>
-                                            <li class="breadcrumb-item"><a href="javascript:void(0);">Category</a></li>
-                                            <li class="breadcrumb-item active">Category Elements</li>
+                                            <li class="breadcrumb-item"><a href="javascript:void(0);">News</a></li>
+                                            <li class="breadcrumb-item active">News Elements</li>
                                         </ol>
                                     </div>
                                 </div> <!-- end row -->
@@ -208,8 +206,23 @@
                                             
                                         <form class="form-horizontal m-t-30"  method="POST" action="%=`/category/add=POST%">
                                             <div class="form-group row">
-                                                <label for="example-text-input" class="col-sm-2 col-form-label">Name</label>
+                                                <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
+                                                <div class="col-sm-10"><input class="form-control" type="text"  value=""  id="example-text-input">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-sm-2 col-form-label">Description</label>
                                                 <div class="col-sm-10"><input class="form-control" type="text" value=""  id="example-text-input">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-sm-2 col-form-label">CategoryId</label>
+                                                <div class="col-sm-10"><input class="form-control" type="text" value="" id="example-text-input">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-sm-2 col-form-label">Image</label>
+                                                <div class="col-sm-10"><input class="form-control" type="file" value=""  id="example-text-input">
                                                 </div>
                                             </div>
                                             <div class="form-group mb-0">
