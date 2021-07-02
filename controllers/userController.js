@@ -11,8 +11,6 @@ exports.createUser = async (req,res)=>{
     const result = new User({
         name:req.body.name,
         email:req.body.email,
-        isAdmin:req.body.isAdmin,
-        isSuperAdmin:req.body.isSuperAdmin,
         password:password
     })
     await result.save()
@@ -49,11 +47,8 @@ exports.login = async (req,res,next)=>{
         }
         let token;
         let payload = {id:user._id,roles:user.role}
-        console.log(payload)
         token = jwt.sign(payload, secret.JWT_SECRET);
-        res.status(200).json({
-            data:token
-        })
+        res.redirect('/')
     })
 }
 
