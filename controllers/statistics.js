@@ -1,6 +1,6 @@
 const User=require('../models/User')
 const New=require('../models/news')
-const Cartegory=require('../models/Category')
+const Category=require('../models/Category')
 
 exports.userNumber=async (req,res,next)=>{
     const user=await User.find()
@@ -15,7 +15,7 @@ exports.newNumber=async (req,res,next)=>{
 };
 
 exports.categoryNumber=async (req,res,next)=>{
-    const category=await New.find()
+    const category=await Category.find()
         .countDocuments()
         // res.json({
         //     data:category

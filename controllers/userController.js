@@ -38,6 +38,7 @@ exports.login = async (req,res,next)=>{
                 success:false,
                 data:'User not found'
             })
+            
         }
         if(!bcrypt.compareSync(req.body.password, user.password)){
             res.status(401).json({
