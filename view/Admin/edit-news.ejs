@@ -27,7 +27,7 @@
 
                 <!-- LOGO -->
                 <div class="topbar-left">
-                    <a href="index.html" class="logo">
+                    <a href="/admin" class="logo">
                         <span class="logo-light">
                             <i class="mdi mdi-camera-control"></i> Stexo
                         </span>
@@ -39,6 +39,7 @@
 
                 <nav class="navbar-custom">
                     <ul class="navbar-right list-inline float-right mb-0">
+                        
                         <!-- language-->
                         <li class="dropdown notification-list list-inline-item d-none d-md-inline-block">
                             <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
@@ -118,7 +119,7 @@
                                     <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right">11</span><i class="mdi mdi-settings"></i> Settings</a>
                                     <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline"></i> Lock screen</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item text-danger" href="#"><i class="mdi mdi-power text-danger"></i> Logout</a>
+                                    <a class="dropdown-item text-danger" href="/user/login"><i class="mdi mdi-power text-danger"></i> Logout</a>
                                 </div>
                             </div>
                         </li>
@@ -156,19 +157,17 @@
                         <ul class="metismenu" id="side-menu">
                             <li class="menu-title">Menu</li>
                             <li>
-                                <a href="/" class="waves-effect">
+                                <a href="/admin" class="waves-effect">
                                     <i class="icon-accelerator"></i><span class="badge badge-success badge-pill float-right">9+</span> <span> Dashboard </span>
                                 </a>
                             </li>
                             
                             <li>
-                                <a href="javascript:void(0);" class="waves-effect"><i class="icon-mail-open"></i><span> Admins <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                                <a href="javascript:void(0);" class="waves-effect"><i class="icon-mail-open"></i><span> News <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                             
                             </li>   
-
                         </ul>
                         
-
                     </div>
                     <!-- Sidebar -->
                     <div class="clearfix"></div></div>
@@ -207,27 +206,27 @@
                                             
                                         <form class="form-horizontal m-t-30"  method="POST" action="%=`/category/add=POST%">
                                             <div class="form-group row">
-                                                <label for="example-text-input" class="col-sm-2 col-form-label">Name</label>
+                                                <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
                                                 <div class="col-sm-10"><input class="form-control" type="text"  value=""  id="example-text-input">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="example-text-input" class="col-sm-2 col-form-label">Email</label>
+                                                <label for="example-text-input" class="col-sm-2 col-form-label">Description</label>
                                                 <div class="col-sm-10"><input class="form-control" type="text" value=""  id="example-text-input">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="example-text-input" class="col-sm-2 col-form-label">Password</label>
-                                                <div class="col-sm-10"><input class="form-control" type="password" value="" id="example-text-input">
+                                                <label for="example-text-input" class="col-sm-2 col-form-label">CategoryId</label>
+                                                <div class="col-sm-10"><input class="form-control" type="text" value="" id="example-text-input">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="example-text-input" class="col-sm-2 col-form-label">Role</label>
-                                                <div class="col-sm-10"><input class="form-control" type="text" value=""  id="example-text-input">
+                                                <label for="example-text-input" class="col-sm-2 col-form-label">Image</label>
+                                                <div class="col-sm-10"><input class="form-control" type="file" value=""  id="example-text-input">
                                                 </div>
                                             </div>
                                             <div class="form-group mb-0">
-                                                <a href="/"><button type="button" class="btn btn-primary waves-effect waves-light" id="alertify-max-log-items" type="submit" >OK</button></a>
+                                                <a href="/"><button type="button" class="btn btn-primary waves-effect waves-light" id="alertify-max-log-items" type="submit" >EDIT</button></a>
                                         </div>
                                         </form>
                                         </div>
