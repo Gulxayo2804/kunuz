@@ -10,14 +10,9 @@ router.get('/add', (req,res)=>{
     })
 })
 
-router.get('/edit', (req,res)=>{
-    res.render('edit-news', {
-        layout:'./layout'
-    })
-})
 
-router.post('/add',admin, createNews)
-router.patch('/edit/:id', admin,newsUpdate)
+router.post('/add', createNews)
+router.patch('/edit/:id',newsUpdate)
 router.get('/all', getAll)
 router.get('/all/:id',getNewsById)
 router.get('/last', newsByDate)

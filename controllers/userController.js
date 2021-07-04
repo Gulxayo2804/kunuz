@@ -4,47 +4,35 @@ const saltRounds=12
 const secret=require('../config/secret')
 const jwt=require('jsonwebtoken')
 
-
 exports.createUser = async (req,res)=>{
     const salt=await bcrypt.genSaltSync(saltRounds)
     const password=await bcrypt.hashSync(req.body.password, salt)
     const result = new User({
         name:req.body.name,
         email:req.body.email,
+        role:req.body.role,
         password:password
     })
     await result.save()
     .then(()=>{
-        res.status(201).json({
-            succes:true,
-            data:result
-        })
+        res.redirect('/admin')
     })
     .catch((error)=>{
-        res.status(500).json({
-            succes:false,
-            data:error
-        })
+        res.status(500).redirect('/user/add')
     })
 }
 
 exports.login = async (req,res,next)=>{
     await User.findOne({email:req.body.email}, (err,user)=>{
         if(err){
-            res.status(401).send(err)
+            return res.status(401).redirect('/user/login')
         }
         if(!user){
-            res.status(404).json({
-                success:false,
-                data:'User not found'
-            })
+            return res.status(404).redirect('/user/login')
             
         }
         if(!bcrypt.compareSync(req.body.password, user.password)){
-            res.status(401).json({
-                success:false,
-                data:'Invalid parol'
-            })
+           return  res.status(401).redirect('/user/login')
         }
         let token;
         let payload = {id:user._id,roles:user.role}
@@ -62,46 +50,33 @@ exports.getMe = async(req,res,next)=>{
     res.status(200).send(user);
 }
 
-exports.getAll= async (req,res,next)=>{
-    const users= await User.find()
-        .select({name:1})
-        // res.status(200).json({
-        //     success:true,
-        //     data:users
-        // })
-    res.render('index', {
-        data:users,
+exports.getElementById=async (req,res,next)=>{
+    const user= await User.findById({_id:req.params.id})
+    res.status(200).render('edit-admin', {
+        data:user,
         layout:'./layout'
     })
 }
 
-exports.deleteUser = async (req,res)=>{
+exports.deleteUser = async (req,res,next)=>{
     await User.findByIdAndDelete({_id:req.params.id})
-    res.status(200).json({
-        succes:true,
-        data:[]
-    })
+    res.status(200).redirect('/admin')
 }
 
-exports.editUser = async(req,res)=>{
-    const user = await User.findByIdAndUpdate({_id:req.params.id})
+exports.editUser = async(req,res,next)=>{
     const salt=await bcrypt.genSalt(saltRounds)
     const password=await bcrypt.hash(req.body.password, salt)
+    const user = await User.findByIdAndUpdate({_id:req.params.id})
     user.name = req.body.name,
     user.email = req.body.email,
-     user.password =password
+    user.role=req.body.role,
+    user.password =req.body.password
      user.save()
     .then(()=>{
-     res.status(200).json({
-         succes:true,
-         data:user
-         })
+     res.status(200).redirect('/admin')
     })
     .catch((err)=>{
-     res.status(500).json({
-         succes:false,
-         data:err
-      })
+     res.status(500).redirect(`/user/${user._id}`)
     })
 }
 

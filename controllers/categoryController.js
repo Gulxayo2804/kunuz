@@ -6,16 +6,10 @@ exports.createCategory = async(req,res,next)=>{
     })
     await category.save()
     .then(()=>{
-        res.status(201).json({
-            success:true,
-            data:category
-        })
+        res.redirect('/admin')
     })
     .catch((error)=>{
-        res.status(500).json({
-            success:false,
-            data:error
-        })
+        res.status(500).redirect('/category/add')
     })
 }
 
