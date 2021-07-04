@@ -16,6 +16,6 @@ router.patch('/edit/:id',newsUpdate)
 router.get('/all', getAll)
 router.get('/all/:id',getNewsById)
 router.get('/last', newsByDate)
-router.delete('/delete/:id', superAdmin, deleteNews)
+router.delete('/delete/:id',  deleteNews)
 
 module.exports=router

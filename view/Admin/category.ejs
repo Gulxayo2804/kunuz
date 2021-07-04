@@ -43,14 +43,14 @@
                         <!-- language-->
                         <li class="dropdown notification-list list-inline-item d-none d-md-inline-block">
                             <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <img src="assets/images/flags/us_flag.jpg" class="mr-2" height="12" alt=""/> English <span class="mdi mdi-chevron-down"></span>
+                                <img src="/images/flags/us_flag.jpg" class="mr-2" height="12" alt=""/> English <span class="mdi mdi-chevron-down"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated language-switch">
-                                <a class="dropdown-item" href="#"><img src="assets/images/flags/french_flag.jpg" alt="" height="16" /><span> French </span></a>
-                                <a class="dropdown-item" href="#"><img src="assets/images/flags/spain_flag.jpg" alt="" height="16" /><span> Spanish </span></a>
-                                <a class="dropdown-item" href="#"><img src="assets/images/flags/russia_flag.jpg" alt="" height="16" /><span> Russian </span></a>
-                                <a class="dropdown-item" href="#"><img src="assets/images/flags/germany_flag.jpg" alt="" height="16" /><span> German </span></a>
-                                <a class="dropdown-item" href="#"><img src="assets/images/flags/italy_flag.jpg" alt="" height="16" /><span> Italian </span></a>
+                                <a class="dropdown-item" href="#"><img src="/images/flags/french_flag.jpg" alt="" height="16" /><span> French </span></a>
+                                <a class="dropdown-item" href="#"><img src="/images/flags/spain_flag.jpg" alt="" height="16" /><span> Spanish </span></a>
+                                <a class="dropdown-item" href="#"><img src="/images/flags/russia_flag.jpg" alt="" height="16" /><span> Russian </span></a>
+                                <a class="dropdown-item" href="#"><img src="/images/flags/germany_flag.jpg" alt="" height="16" /><span> German </span></a>
+                                <a class="dropdown-item" href="#"><img src="/images/flags/italy_flag.jpg" alt="" height="16" /><span> Italian </span></a>
                             </div>
                         </li>
 
@@ -167,7 +167,7 @@
                             </li>
                             
                             <li>
-                                <a href="/new/all" class="waves-effect"><i class="icon-calendar"></i><span> News </span></a>
+                                <a href="/category/all" class="waves-effect"><i class="icon-calendar"></i><span> Categories </span></a>
                             </li>
 
                             <li>
@@ -213,7 +213,7 @@
                                 <div class="col-sm-6">
                                     <ol class="breadcrumb float-right">
                                         <li class="breadcrumb-item"><a href="javascript:void(0);">Stexo</a></li>
-                                        <li class="breadcrumb-item"><a href="javascript:void(0);">News</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript:void(0);">Categories</a></li>
                                         <li class="breadcrumb-item active">Edit</li>
                                     </ol>
                                 </div>
@@ -223,16 +223,14 @@
                         
                         <div class="row">
                             <div class="col-12">
-                                <h5 class="m-t-20 m-b-30">All News</h5>
+                                <h5 class="m-t-20 m-b-30">All Categories</h5>
                                 <div class="card-columns">
                                     <% for(item of data) {%>
                                     <div class="card m-b-30">
-                                        <img class="card-img-top img-fluid" src="/images/small/img-1.jpg" alt="Card image cap">
                                         <div class="card-body">
-                                            <h4 class="card-title font-16 mt-0"><%= item.title%></h4>
-                                            <p class="card-text"><%= item.description%></p>
-                                             <a href="/new/all/<%=`${item._id}`%>" class="btn btn-primary waves-effect waves-light">Edit</a>
-                                             <form method="POST"  action="<%=`/new/delete/${item._id}?_method=DELETE`%>" >
+                                            <h4 class="card-title font-16 mt-0"><%= item.name%></h4>
+                                             <a href="/category/all/<%=`${item._id}`%>" class="btn btn-primary waves-effect waves-light">Edit</a>
+                                             <form method="POST"  action="<%=`/category/delete/${item._id}?_method=DELETE`%>" >
                                              <a ><button class="btn btn-primary waves-effect waves-light">Delete</a></button>
                                             </form>
                                             </div>

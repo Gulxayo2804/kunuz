@@ -31,7 +31,7 @@ exports.newsByDate= async (req,res,next)=>{
         .populate('categoryID')
         .limit(6)
         .sort({date:-1})
-        .select({image:1, title:1, date:1})
+        .select({image:1, title:1})
     res.status(200).send(news)
 };
 exports.getNewsById= async (req,res,next)=>{
@@ -50,7 +50,7 @@ exports.newsUpdate=async(req,res,next)=>{
     // news.image=`/public/uploads${req.file.filename}`
     await news.save()
     .then(()=>{
-        res.status(200).redirect('/admin')
+        res.status(200).redirect('/new/all')
     })
     .catch((err)=>{
         res.status(500).redirect(`/new/all/${news._id}`)
@@ -78,7 +78,7 @@ exports.editnew = async(req,res)=>{
 exports.deleteNews = async(req,res,next)=>{
     await News.findByIdAndDelete({_id:req.params.id},(err,data)=>{
         if(err) throw err
-        res.send("Malumot bazadan uchdi ");
+        res.status(200).redirect('/new/all')
     })
 }
 

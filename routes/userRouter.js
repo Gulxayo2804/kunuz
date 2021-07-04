@@ -15,7 +15,7 @@ router.get('/login',(req,res,next)=>{
     })
 })
 
-// router.get('/all', getAll)
+router.get('/all', getAll)
 router.post('/add', createUser)
 router.get('/:id', getElementById)
 router.post('/login', login)
