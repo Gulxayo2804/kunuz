@@ -22,7 +22,7 @@ app.use('/fonts', express.static(__dirname + 'public/fonts'))
 app.use('/pages', express.static(__dirname + 'public/pages'))
 
 app.set('view engine', 'ejs')
-app.set('views', './view')
+app.set('views', './view/admin')
 
 // app.get('/',(req,res)=>{
 //     res.render('index',{
