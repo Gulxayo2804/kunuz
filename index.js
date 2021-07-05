@@ -14,12 +14,10 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 app.use(cors())
 app.use(express.static('public'))
-app.use('/css', express.static(__dirname + 'public/css'))
-app.use('/js', express.static(__dirname + 'public/js'))
-app.use('/images', express.static(__dirname + 'public/images'))
-app.use('/icons', express.static(__dirname + 'public/icons'))
-app.use('/fonts', express.static(__dirname + 'public/fonts'))
-app.use('/pages', express.static(__dirname + 'public/pages'))
+const methodOverride = require('method-override');
+app.use(methodOverride("_method", {
+    methods: ["POST", "GET"]
+}));
 
 app.set('view engine', 'ejs')
 app.set('views', './view/admin')

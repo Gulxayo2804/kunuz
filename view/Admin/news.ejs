@@ -43,14 +43,14 @@
                         <!-- language-->
                         <li class="dropdown notification-list list-inline-item d-none d-md-inline-block">
                             <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <img src="/images/flags/us_flag.jpg" class="mr-2" height="12" alt=""/> English <span class="mdi mdi-chevron-down"></span>
+                                <img src="assets/images/flags/us_flag.jpg" class="mr-2" height="12" alt=""/> English <span class="mdi mdi-chevron-down"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated language-switch">
-                                <a class="dropdown-item" href="#"><img src="/images/flags/french_flag.jpg" alt="" height="16" /><span> French </span></a>
-                                <a class="dropdown-item" href="#"><img src="/images/flags/spain_flag.jpg" alt="" height="16" /><span> Spanish </span></a>
-                                <a class="dropdown-item" href="#"><img src="/images/flags/russia_flag.jpg" alt="" height="16" /><span> Russian </span></a>
-                                <a class="dropdown-item" href="#"><img src="/images/flags/germany_flag.jpg" alt="" height="16" /><span> German </span></a>
-                                <a class="dropdown-item" href="#"><img src="/images/flags/italy_flag.jpg" alt="" height="16" /><span> Italian </span></a>
+                                <a class="dropdown-item" href="#"><img src="assets/images/flags/french_flag.jpg" alt="" height="16" /><span> French </span></a>
+                                <a class="dropdown-item" href="#"><img src="assets/images/flags/spain_flag.jpg" alt="" height="16" /><span> Spanish </span></a>
+                                <a class="dropdown-item" href="#"><img src="assets/images/flags/russia_flag.jpg" alt="" height="16" /><span> Russian </span></a>
+                                <a class="dropdown-item" href="#"><img src="assets/images/flags/germany_flag.jpg" alt="" height="16" /><span> German </span></a>
+                                <a class="dropdown-item" href="#"><img src="assets/images/flags/italy_flag.jpg" alt="" height="16" /><span> Italian </span></a>
                             </div>
                         </li>
 
@@ -59,7 +59,9 @@
                             <a class="nav-link waves-effect" href="#" id="btn-fullscreen">
                                 <i class="mdi mdi-arrow-expand-all noti-icon"></i>
                             </a>
-                        </li><!-- notification -->
+                        </li>
+
+                        <!-- notification -->
                         <li class="dropdown notification-list list-inline-item">
                             <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                 <i class="mdi mdi-bell-outline noti-icon"></i>
@@ -107,7 +109,9 @@
                                     View all <i class="fi-arrow-right"></i>
                                 </a>
                             </div>
-                        </li><li class="dropdown notification-list list-inline-item">
+                        </li>
+
+                        <li class="dropdown notification-list list-inline-item">
                             <div class="dropdown notification-list nav-pro-img">
                                 <a class="dropdown-toggle nav-link arrow-none nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                     <img src="/images/users/user-4.jpg" alt="user" class="rounded-circle">
@@ -163,108 +167,110 @@
                             </li>
                             
                             <li>
-                                <a href="javascript:void(0);" class="waves-effect"><i class="icon-mail-open"></i><span> News <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                                <a href="/new/all" class="waves-effect"><i class="icon-calendar"></i><span> News </span></a>
+                            </li>
+
+                            <li>
                             
-                            </li>   
+                            <li>
+                                <a href="javascript:void(0);" class="waves-effect"><i class="icon-share"></i><span> Multi Level <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                                <ul class="submenu">
+                                    <li><a href="javascript:void(0);"> Menu 1</a></li>
+                                    <li>
+                                        <a href="javascript:void(0);">Menu 2  <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                                        <ul class="submenu">
+                                            <li><a href="javascript:void(0);">Menu 2.1</a></li>
+                                            <li><a href="javascript:void(0);">Menu 2.1</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
                         </ul>
-                        
+
                     </div>
                     <!-- Sidebar -->
-                    <div class="clearfix"></div></div>
-                    <!-- Sidebar -left -->
-    
+                    <div class="clearfix"></div>
+
                 </div>
-                <!-- Left Sidebar End -->
-    
-                <!-- ============================================================== -->
-                <!-- Start right Content here -->
-                <!-- ============================================================== -->
-                <div class="content-page">
-                    <!-- Start content -->
-                    <div class="content">
-                        <div class="container-fluid">
-                            <div class="page-title-box">
-                                <div class="row align-items-center">
-                                    <div class="col-sm-6">
-                                        <h4 class="page-title">News Elements</h4>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <ol class="breadcrumb float-right">
-                                            <li class="breadcrumb-item"><a href="javascript:void(0);">Stexo</a></li>
-                                            <li class="breadcrumb-item"><a href="javascript:void(0);">News</a></li>
-                                            <li class="breadcrumb-item active">News Elements</li>
-                                        </ol>
-                                    </div>
-                                </div> <!-- end row -->
-                            </div>
-                            <!-- end page-title -->
-    
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="card m-b-30">
-                                        <div class="card-body">
-                                            
-                                        <form class="form-horizontal m-t-30"  method="POST" action="/new/add">
-                                            <div class="form-group row">
-                                                <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
-                                                <div class="col-sm-10"><input class="form-control" type="text" name="title"  value=""  id="example-text-input">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="example-text-input" class="col-sm-2 col-form-label">Description</label>
-                                                <div class="col-sm-10"><input class="form-control" type="text" name="description" value=""  id="example-text-input">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="example-text-input" class="col-sm-2 col-form-label">CategoryID</label>
-                                                <div class="col-sm-10"><input class="form-control" type="text" name="categoryID" value="" id="example-text-input">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="example-text-input" class="col-sm-2 col-form-label">Image</label>
-                                                <div class="col-sm-10"><input class="form-control" type="file" name="image" value=""  id="example-text-input">
-                                                </div>
-                                            </div>
-                                            <div class="form-group mb-0">
-                                                <a><button  class="btn btn-primary waves-effect waves-light" id="alertify-max-log-items" type="submit" >CREATE</button></a>
-                                        </div>
-                                        </form>
-                                        </div>
-                                       
-                                    </div>
-                                </div> <!-- end col -->
-                            </div> <!-- end row -->      
-    
-                            
-                        </div>
-                        <!-- container-fluid -->
-    
-                    </div>
-                    <!-- content -->
-    
-                    <footer class="footer">
-                        © 2019 - 2020 Stexo <span class="d-none d-sm-inline-block"> - Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign</span>.
-                    </footer>
-    
-                </div>
-                <!-- ============================================================== -->
-                <!-- End Right content here -->
-                <!-- ============================================================== -->
-    
+                <!-- Sidebar -left -->
+
             </div>
-            <!-- END wrapper -->
-    
-            <!-- jQuery  -->
-            <script src="/js/jquery.min.js"></script>
-            <script src="/js/bootstrap.bundle.min.js"></script>
-            <script src="/js/metismenu.min.js"></script>
-            <script src="/js/jquery.slimscroll.js"></script>
-            <script src="/js/waves.min.js"></script>
-    
-            <!-- App js -->
-            <script src="/js/app.js"></script>
-            <script src="../index.js"></script>
-            
-        </body>
-    
-    </html>
+            <!-- Left Sidebar End -->
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="page-title-box">
+                            <div class="row align-items-center">
+                                <div class="col-sm-6">
+                                    <h4 class="page-title">STEXO</h4>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ol class="breadcrumb float-right">
+                                        <li class="breadcrumb-item"><a href="javascript:void(0);">Stexo</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript:void(0);">News</a></li>
+                                        <li class="breadcrumb-item active">Edit</li>
+                                    </ol>
+                                </div>
+                            </div> <!-- end row -->
+                        </div>
+                        <!-- end page-title -->
+                        
+                        <div class="row">
+                            <div class="col-12">
+                                <h5 class="m-t-20 m-b-30">All News</h5>
+                                <div class="card-columns">
+                                    <% for(item of data) {%>
+                                    <div class="card m-b-30">
+                                        <img class="card-img-top img-fluid" src="/images/small/img-1.jpg" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h4 class="card-title font-16 mt-0"><%= item.title%></h4>
+                                            <p class="card-text"><%= item.description%></p>
+                                             <a href="/new/all/<%=`${item._id}`%>" class="btn btn-primary waves-effect waves-light">Edit</a>
+                                             <form method="POST"  action="<%=`/new/delete/${item._id}?_method=DELETE`%>" >
+                                             <a ><button class="btn btn-primary waves-effect waves-light">Delete</a></button>
+                                            </form>
+                                            </div>
+                                    </div>
+                                 <%}%>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row --> 
+                        
+                    </div>
+                    <!-- container-fluid -->
+
+                </div>
+                <!-- content -->
+
+                <footer class="footer">
+                    © 2019 - 2020 Stexo <span class="d-none d-sm-inline-block"> - Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign</span>.
+                </footer>
+
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Right content here -->
+            <!-- ============================================================== -->
+
+        </div>
+        <!-- END wrapper -->
+
+        <!-- jQuery  -->
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/metismenu.min.js"></script>
+        <script src="/js/jquery.slimscroll.js"></script>
+        <script src="/js/waves.min.js"></script>
+
+        <!-- App js -->
+        <script src="/js/app.js"></script>
+        
+    </body>
+
+</html>

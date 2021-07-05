@@ -203,32 +203,31 @@
                                 <div class="col-12">
                                     <div class="card m-b-30">
                                         <div class="card-body">
-                                            
-                                        <form class="form-horizontal m-t-30"  method="POST" action="%=`/category/add=POST%">
+                                            <form method="POST" class="form-horizontal m-t-30" action="<%=`/new/edit/${data._id}?_method=PATCH`%>">
                                             <div class="form-group row">
                                                 <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
-                                                <div class="col-sm-10"><input class="form-control" type="text"  value=""  id="example-text-input">
+                                                <div class="col-sm-10"><input class="form-control" type="text" name="title"  value="<%= data.title%>"  id="example-text-input">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="example-text-input" class="col-sm-2 col-form-label">Description</label>
-                                                <div class="col-sm-10"><input class="form-control" type="text" value=""  id="example-text-input">
+                                                <div class="col-sm-10"><input class="form-control" type="text" name="description" value="<%= data.description%>"  id="example-text-input">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="example-text-input" class="col-sm-2 col-form-label">CategoryId</label>
-                                                <div class="col-sm-10"><input class="form-control" type="text" value="" id="example-text-input">
+                                                <div class="col-sm-10"><input class="form-control" type="text" name="categoryID" value="<%= data.categoryID%>" id="example-text-input">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="example-text-input" class="col-sm-2 col-form-label">Image</label>
-                                                <div class="col-sm-10"><input class="form-control" type="file" value=""  id="example-text-input">
+                                                <div class="col-sm-10"><input class="form-control" type="file" name="image" value=""  id="example-text-input">
                                                 </div>
                                             </div>
                                             <div class="form-group mb-0">
-                                                <a href="/"><button type="button" class="btn btn-primary waves-effect waves-light" id="alertify-max-log-items" type="submit" >EDIT</button></a>
-                                        </div>
-                                        </form>
+                                                <a><button class="btn btn-primary waves-effect waves-light" id="alertify-max-log-items" type="submit" >EDIT</button></a>
+                                         </form>
+                                            </div>
                                         </div>
                                        
                                     </div>

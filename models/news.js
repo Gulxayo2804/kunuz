@@ -12,10 +12,10 @@ const newsSchema = new mongoose.Schema({
         type:mongoose.ObjectId,
         required:true
     },
-    image:{
-        type:String,
-        required:true
-    }
+    // image:{
+    //     type:String,
+    //     required:true
+    // }
 },{
     timestamps:true
 }
