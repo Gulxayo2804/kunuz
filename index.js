@@ -21,12 +21,13 @@ app.use(methodOverride("_method", {
 
 app.set('view engine', 'ejs')
 app.set('views', './view/admin')
+app.set('views', './view/page')
 
-// app.get('/',(req,res)=>{
-//     res.render('index',{
-//         layout:'./layout'
-//     })
-// })
+app.get('/',(req,res)=>{
+    res.render('user',{
+        layout:'./layout1'
+    })
+})-
 
 app.use('/admin',require('./routes/statisticsRouter') )
 app.use('/new', require('./routes/newRouter'))

@@ -16,12 +16,20 @@ exports.createCategory = async(req,res,next)=>{
 exports.getAll = async(req,res,next)=>{
     const category = await Category.find()
         .select({name:1})
-    res.status(200).render('category',{
+    res.status(200).render('user',{
         data:category,
-        layout:'./layout'
+        layout:'./layout1'
     })
 }
 
+exports.getAlls = async(req,res,next)=>{
+    const category = await Category.find()
+        .select({name:1})
+    res.status(200).render('user',{
+        data:category,
+        layout:'./user'
+    })
+}
 exports.categoryUpdate=async (req,res,next)=>{
     const category=await Category.findByIdAndUpdate({_id:req.params.id})
         category.name=req.body.name
