@@ -72,13 +72,13 @@ exports.editnew = async(req,res)=>{
     news.save()
     .then(()=>{
         res.status(200).json({
-            succes:true,
+            success:true,
             data:user
         })
     })
     .catch((err)=>{
         res.status(500).json({
-            succes:false,
+            success:false,
             data:err
         })
     })

@@ -16,13 +16,13 @@ exports.createUser = async (req,res)=>{
     await result.save()
     .then(()=>{
         res.status(201).json({
-            succes:true,
+            success:true,
             data:result
         })
     })
     .catch((error)=>{
         res.status(500).json({
-            succes:false,
+            success:false,
             data:error
         })
     })
@@ -38,7 +38,6 @@ exports.login = async (req,res,next)=>{
                 success:false,
                 data:'User not found'
             })
-            
         }
         if(!bcrypt.compareSync(req.body.password, user.password)){
             res.status(401).json({
@@ -78,7 +77,7 @@ exports.getAll= async (req,res,next)=>{
 exports.deleteUser = async (req,res)=>{
     await User.findByIdAndDelete({_id:req.params.id})
     res.status(200).json({
-        succes:true,
+        success:true,
         data:[]
     })
 }
@@ -93,13 +92,13 @@ exports.editUser = async(req,res)=>{
      user.save()
     .then(()=>{
      res.status(200).json({
-         succes:true,
+         success:true,
          data:user
          })
     })
     .catch((err)=>{
      res.status(500).json({
-         succes:false,
+         success:false,
          data:err
       })
     })
