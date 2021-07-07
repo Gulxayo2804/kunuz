@@ -1,4 +1,5 @@
 const News=require('../models/news')
+const Category= require('../models/Category')
 
 exports.createNews=async (req,res,next)=>{
     const news=new News({
@@ -7,6 +8,7 @@ exports.createNews=async (req,res,next)=>{
         categoryID:req.body.categoryID,
         image:`/public/uploads/${req.file.filename}`
     })
+    //file qushmasa server qotib qolyapdi
     await news.save()
     .then(()=>{
         res.redirect('/new/all')
@@ -40,6 +42,16 @@ exports.getNewsById= async (req,res,next)=>{
     res.status(200).render('edit-news',{
         data:news,
         layout:'./layout'
+    })
+};
+
+exports.getNewsByTitle= async (req,res,next)=>{
+    const news= await News.findById({_id:req.params.id})
+    const result= await News.find()
+    const category=await Category.find()
+    res.status(200).render('news-page',{
+        data:{news, result, category},
+        layout:'./user'
     })
 };
 
