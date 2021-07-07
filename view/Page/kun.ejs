@@ -86,8 +86,8 @@
             <div class="row">
             <% for(item of data.news) {%>
               <div class="col-md-4 p-3">
-                <a href="#"><img class="p-3"  style="width: 100%;" src="<%= item.image%>" alt=""></a>
-                <a href="#"><p class=" text-dark" style="font-size: 15px;"><%= item.title%></p></a>
+                <a href="<%= `/new/alls/${item._id}`%>"><img class="p-3"  style="width: 100%;" src="<%= item.image%>" alt=""></a>
+                <a href="<%= `/new/alls/${item._id}`%>"><p class=" text-dark" style="font-size: 15px;"><%= item.title%></p></a>
               </div>
               <% }%>
             </div>
@@ -102,7 +102,7 @@
                 <div > <a href="#"><h2 class="m-3  text-dark " style="font-size: 23px;">Сўнгги янгиликлар</h2></a></div>
                 <% for(item of data.last) {%>
             <p class="text-muted m-3" style="font-size:15px;"><%= item.createdAt%></p>
-            <a href="#"><p  class=" m-3  text-dark" style="font-size: 18px;"><%= item.title%></p></a>
+            <a href="<%= `/new/alls/${item._id}`%>"><p  class=" m-3  text-dark" style="font-size: 18px;"><%= item.title%></p></a>
                   <%}%>
           </div>
             <button type="button" class="btn btn-outline-dark p-2 ml-3 px-5">Кўпроқ янгилик </button>

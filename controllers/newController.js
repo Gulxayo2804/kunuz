@@ -1,4 +1,5 @@
 const News=require('../models/news')
+const Category= require('../models/Category')
 
 exports.createNews=async (req,res,next)=>{
     const news=new News({
@@ -7,6 +8,7 @@ exports.createNews=async (req,res,next)=>{
         categoryID:req.body.categoryID,
         image:`/public/uploads/${req.file.filename}`
     })
+    //file qushmasa server qotib qolyapdi
     await news.save()
     .then(()=>{
         res.redirect('/new/all')
@@ -43,6 +45,16 @@ exports.getNewsById= async (req,res,next)=>{
     })
 };
 
+exports.getNewsByTitle= async (req,res,next)=>{
+    const news= await News.findById({_id:req.params.id})
+    const result= await News.find()
+    const category=await Category.find()
+    res.status(200).render('news-page',{
+        data:{news, result, category},
+        layout:'./user'
+    })
+};
+
 exports.newsUpdate=async(req,res,next)=>{
     const news=await News.findByIdAndUpdate({_id:req.params.id})
     news.title=req.body.title,
@@ -57,9 +69,7 @@ exports.newsUpdate=async(req,res,next)=>{
         res.status(500).redirect(`/new/all/${news._id}`)
     })
 }
-<<<<<<< HEAD
 
-=======
 exports.editnew = async(req,res)=>{
     const news = await News.findByIdAndUpdate({_id:req.params.id})
     news.title = req.body.title,
@@ -79,7 +89,7 @@ exports.editnew = async(req,res)=>{
         })
     })
    }
->>>>>>> 77f285849ab30590cf99a2d18b1d8985e099e5fd
+
 exports.deleteNews = async(req,res,next)=>{
     await News.findByIdAndDelete({_id:req.params.id},(err,data)=>{
         if(err) throw err

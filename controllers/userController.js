@@ -15,16 +15,6 @@ exports.createUser = async (req,res)=>{
     })
     await result.save()
     .then(()=>{
-        res.status(201).json({
-            success:true,
-            data:result
-        })
-    })
-    .catch((error)=>{
-        res.status(500).json({
-            success:false,
-            data:error
-        })
         res.redirect('/admin')
     })
     .catch((error)=>{
