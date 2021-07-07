@@ -20,9 +20,9 @@ app.use(methodOverride("_method", {
     methods: ["POST", "GET"]
 }));
 
+
 app.set('view engine', 'ejs')
-// app.set('views', './view/admin')
-app.set('views', './view/page')
+app.set('views', './views')
 
 app.use('/', require('./routes/mainRouter'))
 app.use('/admin',require('./routes/statisticsRouter') )

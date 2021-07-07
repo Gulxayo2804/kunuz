@@ -9,8 +9,8 @@ exports.getall=async (req,res,next)=>{
         .limit(5)
         .sort({date:-1})
     const category= await Category.find()
-    res.status(200).render('kun',{
+    res.status(200).render('page/kun',{
         data:{news,category,last},
-        layout:'./user'
+        layout:'./page/user'
     })
 }

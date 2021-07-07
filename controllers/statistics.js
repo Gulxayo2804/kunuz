@@ -10,9 +10,9 @@ exports.userNumber=async (req,res,next)=>{
         .countDocuments()
     const category=await Category.find()
         .countDocuments()
-        res.render('index',{
+        res.render('admin/index',{
             data:{user,news,category,users},
-            layout:'./layout'
+            layout:'./admin/layout'
         })
 };
 
