@@ -203,7 +203,7 @@
                                 <div class="col-12">
                                     <div class="card m-b-30">
                                         <div class="card-body">
-                                            <form method="POST" class="form-horizontal m-t-30" action="<%=`/new/edit/${data._id}?_method=PATCH`%>">
+                                            <form method="POST" class="form-horizontal m-t-30" enctype="multipart/form-data" action="<%=`/new/edit/${data._id}?_method=PATCH`%>">
                                             <div class="form-group row">
                                                 <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
                                                 <div class="col-sm-10"><input class="form-control" type="text" name="title"  value="<%= data.title%>"  id="example-text-input">
@@ -221,7 +221,7 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label for="example-text-input" class="col-sm-2 col-form-label">Image</label>
-                                                <div class="col-sm-10"><input class="form-control" type="file" name="image" value=""  id="example-text-input">
+                                                <div class="col-sm-10"><input class="form-control-file border" type="file" name="image" value=""  id="input-files">
                                                 </div>
                                             </div>
                                             <div class="form-group mb-0">

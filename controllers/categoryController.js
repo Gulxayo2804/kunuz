@@ -1,4 +1,5 @@
 const Category = require('../models/Category');
+const News= require('../models/news')
 
 exports.createCategory = async(req,res,next)=>{
     const category = new Category({
@@ -16,9 +17,9 @@ exports.createCategory = async(req,res,next)=>{
 exports.getAll = async(req,res,next)=>{
     const category = await Category.find()
         .select({name:1})
-    res.status(200).render('user',{
+    res.status(200).render('category',{
         data:category,
-        layout:'./layout1'
+        layout:'./layout'
     })
 }
 
@@ -52,5 +53,17 @@ exports.getElementById= async (req,res,next)=>{
     res.status(200).render('edit-category',{
         data:category,
         layout:'./layout'
+    })
+}
+exports.getElementByName= async (req,res,next)=>{
+    const category= await Category.find()
+    const news= await News.find()
+        .populate({
+            path:'categoryID',
+        })
+    const categories=await Category.findOne({name:req.params.name})
+    res.status(200).render('news',{
+        data:{category, categories, news},
+        layout:'./user'
     })
 }

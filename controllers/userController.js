@@ -37,7 +37,7 @@ exports.login = async (req,res,next)=>{
         let token;
         let payload = {id:user._id,roles:user.role}
         token = jwt.sign(payload, secret.JWT_SECRET);
-        res.redirect('/')
+        res.redirect('/admin')
     })
 }
 
