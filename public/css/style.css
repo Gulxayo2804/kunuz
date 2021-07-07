@@ -131,9 +131,11 @@ b, strong {
   margin: 0;
 }
 
+
 .dropdown-item {
   background-color: #ffffff;
   padding: .4rem 1rem;
+  
 }
 
 .dropdown-item:active, .dropdown-item:hover {

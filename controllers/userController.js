@@ -15,6 +15,16 @@ exports.createUser = async (req,res)=>{
     })
     await result.save()
     .then(()=>{
+        res.status(201).json({
+            success:true,
+            data:result
+        })
+    })
+    .catch((error)=>{
+        res.status(500).json({
+            success:false,
+            data:error
+        })
         res.redirect('/admin')
     })
     .catch((error)=>{
@@ -28,6 +38,10 @@ exports.login = async (req,res,next)=>{
             return res.status(401).redirect('/user/login')
         }
         if(!user){
+            res.status(404).json({
+                success:false,
+                data:'User not found'
+            })
             return res.status(404).redirect('/user/login')
             
         }
@@ -60,6 +74,12 @@ exports.getElementById=async (req,res,next)=>{
 
 exports.deleteUser = async (req,res,next)=>{
     await User.findByIdAndDelete({_id:req.params.id})
+
+    res.status(200).json({
+        success:true,
+        data:[]
+    })
+
     res.status(200).redirect('/admin')
 }
 
@@ -73,6 +93,16 @@ exports.editUser = async(req,res,next)=>{
     user.password =req.body.password
      user.save()
     .then(()=>{
+     res.status(200).json({
+         success:true,
+         data:user
+         })
+    })
+    .catch((err)=>{
+     res.status(500).json({
+         success:false,
+         data:err
+      })
      res.status(200).redirect('/admin')
     })
     .catch((err)=>{
