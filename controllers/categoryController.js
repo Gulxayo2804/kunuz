@@ -17,18 +17,18 @@ exports.createCategory = async(req,res,next)=>{
 exports.getAll = async(req,res,next)=>{
     const category = await Category.find()
         .select({name:1})
-    res.status(200).render('category',{
+    res.status(200).render('admin/category',{
         data:category,
-        layout:'./layout'
+        layout:'./admin/layout'
     })
 }
 
 exports.getAlls = async(req,res,next)=>{
     const category = await Category.find()
         .select({name:1})
-    res.status(200).render('user',{
+    res.status(200).render('page/user',{
         data:category,
-        layout:'./user'
+        layout:'./page/user'
     })
 }
 exports.categoryUpdate=async (req,res,next)=>{
@@ -50,9 +50,9 @@ exports.categoryDelete=async(req,res,next)=>{
 
 exports.getElementById= async (req,res,next)=>{
     const category= await Category.findById({_id:req.params.id})
-    res.status(200).render('edit-category',{
+    res.status(200).render('admin/edit-category',{
         data:category,
-        layout:'./layout'
+        layout:'./admin/layout'
     })
 }
 exports.getElementByName= async (req,res,next)=>{
@@ -62,8 +62,8 @@ exports.getElementByName= async (req,res,next)=>{
             path:'categoryID',
         })
     const categories=await Category.findOne({name:req.params.name})
-    res.status(200).render('news',{
+    res.status(200).render('page/news',{
         data:{category, categories, news},
-        layout:'./user'
+        layout:'./page/user'
     })
 }

@@ -4,14 +4,14 @@ const { createUser, login, getMe, deleteUser, editUser, getAll, getElementById }
 
 router.get('/add', (req,res,next)=>{
     res.render('user-page',{
-        layout:'./layout'
+        layout:'./admin/layout'
     })
 })
 
 
 router.get('/login',(req,res,next)=>{
-    res.render('pages-login',{
-        layout:'./layout'
+    res.render('admin/pages-login',{
+        layout:'./admin/layout'
     })
 })
 
