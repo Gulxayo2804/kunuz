@@ -5,11 +5,11 @@ exports.createNews=async (req,res,next)=>{
         title:req.body.title,
         description:req.body.description,
         categoryID:req.body.categoryID,
-        // image:`/public/uploads${req.file.filename}`
+        image:`/public/uploads/${req.file.filename}`
     })
     await news.save()
     .then(()=>{
-        res.redirect('/admin')
+        res.redirect('/new/all')
     })
     .catch((err)=>{
         res.status(500).redirect('/new/add')
@@ -25,6 +25,7 @@ exports.getAll=async (req,res,next)=>{
         layout:'./layout'
     })
 };
+
 
 exports.newsByDate= async (req,res,next)=>{
     const news= await News.find()
@@ -47,7 +48,7 @@ exports.newsUpdate=async(req,res,next)=>{
     news.title=req.body.title,
     news.description=req.body.description,
     news.categoryID=req.body.categoryID
-    // news.image=`/public/uploads${req.file.filename}`
+    news.image=`/public/uploads/${req.file.filename}`
     await news.save()
     .then(()=>{
         res.status(200).redirect('/new/all')
@@ -56,6 +57,9 @@ exports.newsUpdate=async(req,res,next)=>{
         res.status(500).redirect(`/new/all/${news._id}`)
     })
 }
+<<<<<<< HEAD
+
+=======
 exports.editnew = async(req,res)=>{
     const news = await News.findByIdAndUpdate({_id:req.params.id})
     news.title = req.body.title,
@@ -75,6 +79,7 @@ exports.editnew = async(req,res)=>{
         })
     })
    }
+>>>>>>> 77f285849ab30590cf99a2d18b1d8985e099e5fd
 exports.deleteNews = async(req,res,next)=>{
     await News.findByIdAndDelete({_id:req.params.id},(err,data)=>{
         if(err) throw err

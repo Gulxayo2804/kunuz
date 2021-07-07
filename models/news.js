@@ -10,12 +10,13 @@ const newsSchema = new mongoose.Schema({
     },
     categoryID:{
         type:mongoose.ObjectId,
+        ref:'Category',
         required:true
     },
-    // image:{
-    //     type:String,
-    //     required:true
-    // }
+    image:{
+        type:String,
+        required:true
+    }
 },{
     timestamps:true
 }
