@@ -22,9 +22,9 @@ exports.getAll=async (req,res,next)=>{
     const news= await News.find()
         .populate('categoryID')
         .limit(12)
-    res.status(200).render('news',{
+    res.status(200).render('admin/news',{
         data:news,
-        layout:'./layout'
+        layout:'./admin/layout'
     })
 };
 
@@ -39,9 +39,9 @@ exports.newsByDate= async (req,res,next)=>{
 };
 exports.getNewsById= async (req,res,next)=>{
     const news= await News.findById({_id:req.params.id})
-    res.status(200).render('edit-news',{
+    res.status(200).render('admin/edit-news',{
         data:news,
-        layout:'./layout'
+        layout:'./admin/layout'
     })
 };
 
@@ -49,9 +49,9 @@ exports.getNewsByTitle= async (req,res,next)=>{
     const news= await News.findById({_id:req.params.id})
     const result= await News.find()
     const category=await Category.find()
-    res.status(200).render('news-page',{
+    res.status(200).render('page/news-page',{
         data:{news, result, category},
-        layout:'./user'
+        layout:'./page/user'
     })
 };
 
@@ -70,25 +70,6 @@ exports.newsUpdate=async(req,res,next)=>{
     })
 }
 
-exports.editnew = async(req,res)=>{
-    const news = await News.findByIdAndUpdate({_id:req.params.id})
-    news.title = req.body.title,
-    news.description = req.body.description,
-    user.categoryID = req.body.categoryID
-    news.save()
-    .then(()=>{
-        res.status(200).json({
-            success:true,
-            data:user
-        })
-    })
-    .catch((err)=>{
-        res.status(500).json({
-            success:false,
-            data:err
-        })
-    })
-   }
 
 exports.deleteNews = async(req,res,next)=>{
     await News.findByIdAndDelete({_id:req.params.id},(err,data)=>{

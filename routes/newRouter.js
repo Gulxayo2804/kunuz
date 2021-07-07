@@ -19,8 +19,8 @@ const storage=multer.diskStorage({
 const upload= multer({storage:storage})
 
 router.get('/add', (req,res)=>{
-    res.render('news-page', {
-        layout:'./layout'
+    res.render('admin/news-page', {
+        layout:'./admin/layout'
     })
 })
 

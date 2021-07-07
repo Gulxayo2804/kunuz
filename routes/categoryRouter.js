@@ -3,8 +3,8 @@ const {createCategory, categoryUpdate,
     getAll, getElementById, categoryDelete,getAlls, getElementByName} = require('../controllers/categoryController');
 
 router.get('/add', (req,res)=>{
-    res.render('category-page',{
-        layout:'./layout'
+    res.render('admin/category-page',{
+        layout:'./admin/layout'
     })
 })
 router.get('/all/:id', getElementById)

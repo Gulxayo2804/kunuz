@@ -56,9 +56,9 @@ exports.getMe = async(req,res,next)=>{
 
 exports.getElementById=async (req,res,next)=>{
     const user= await User.findById({_id:req.params.id})
-    res.status(200).render('edit-admin', {
+    res.status(200).render('admin/edit-admin', {
         data:user,
-        layout:'./layout'
+        layout:'./admin/layout'
     })
 }
 
