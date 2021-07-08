@@ -23,14 +23,7 @@ exports.getAll = async(req,res,next)=>{
     })
 }
 
-exports.getAlls = async(req,res,next)=>{
-    const category = await Category.find()
-        .select({name:1})
-    res.status(200).render('page/user',{
-        data:category,
-        layout:'./page/user'
-    })
-}
+
 exports.categoryUpdate=async (req,res,next)=>{
     const category=await Category.findByIdAndUpdate({_id:req.params.id})
         category.name=req.body.name
@@ -55,15 +48,15 @@ exports.getElementById= async (req,res,next)=>{
         layout:'./admin/layout'
     })
 }
+
 exports.getElementByName= async (req,res,next)=>{
     const category= await Category.find()
-    const news= await News.find()
-        .populate({
-            path:'categoryID',
-        })
-    const categories=await Category.findOne({name:req.params.name})
+    const last= await News.find()
+        .sort({createdAt:-1})
+    const news= await News.find({categoryID:req.params.categoryID})
+            .populate('categoryID',{ name : 1})
     res.status(200).render('page/news',{
-        data:{category, categories, news},
+        data:{category,news,last},
         layout:'./page/user'
     })
 }
