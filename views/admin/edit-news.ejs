@@ -36,10 +36,13 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label for="example-text-input" class="col-sm-2 col-form-label">CategoryID</label>
-                                                <select class="col-sm-2"  id="example-text-input" name="categoryID" >
+                                                <select class="col-sm-2" 
+                                                 id="example-text-input" 
+                                                 name="categoryID" 
+                                                 >
                                                     <% for(item of data.category) {%>
-                                                        <% console.log(data.news.categoryID)%>
-                                                    <option class="form-control" value="<%= data.news.categoryID%>"><%= item.name%></option>
+                                                        <% console.log(item._id)%>
+                                                    <option class="form-control"  value="<%= item._id%>"><%= item.name%></option>
                                                     <% }%>
                                                 </select>
                                             </div>
