@@ -1,3 +1,5 @@
+const secret=require('../config/secret')
+const jwt=require('jsonwebtoken')
 exports.superAdmin=(req,res,next)=>{
     let token=req.headers.authorization;
     const decoded=jwt.verify(token, secret.JWT_SECRET)
@@ -11,7 +13,8 @@ exports.superAdmin=(req,res,next)=>{
 }
 
 exports.admin=(req,res,next)=>{
-    let token=req.headers.authorization;
+    let token;
+    token=req.headers.authorization;
     const decoded=jwt.verify(token, secret.JWT_SECRET)
     if(!token){
         return res.status(401).send("Token bo'lmaganligi sababli routerga kirish huquqi yo'q")

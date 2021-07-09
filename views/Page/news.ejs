@@ -2,13 +2,13 @@
         <div class="row">
           <!-- o'ng qism -->
           <div class="col-md-9">
-
-
             <div class="row">
+            <% data.news.forEach(function(a) {%>
               <div class="col-md-6">
-                <a ><h2 class="m-3 pl-4  text-dark text-left " style="font-size: 23px;"><%= data.news._id%>
+                <a ><h2 class="m-3 pl-4  text-dark text-left " style="font-size: 23px;"><%= a.categoryID.name%>
                 </h2></a>
               </div>
+              <%})%>
               <div class="col-md-6">
                 <a href="#"><p class="m-3  text-dark text-right " style="font-size: 18px;">Барчаси</p></a>
               </div>
@@ -49,6 +49,4 @@
         </div>
       </div>
       </div>
-
-
     </div>

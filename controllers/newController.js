@@ -18,29 +18,6 @@ exports.createNews=async (req,res,next)=>{
     })
 }
 
-exports.addNews=async (req,res,next)=>{
-    const news=new News({
-        title:req.body.title,
-        description:req.body.description,
-        categoryID:req.body.categoryID,
-        image:`/public/uploads/${req.file.filename}`
-    })
-    //file qushmasa server qotib qolyapdi
-    await news.save()
-    .then(()=>{
-        res.status(200).json({
-            success:true,
-            data:news
-        })
-    })
-    .catch((err)=>{
-        res.status(500).json({
-            success:true,
-            data:err
-        })
-    })
-}
-
 exports.getAll=async (req,res,next)=>{
     const news= await News.find()
         .populate('categoryID',{name:1})
@@ -52,14 +29,6 @@ exports.getAll=async (req,res,next)=>{
 };
 
 
-exports.newsByDate= async (req,res,next)=>{
-    const news= await News.find()
-        .populate('categoryID')
-        .limit(6)
-        .sort({date:-1})
-        .select({image:1, title:1})
-    res.status(200).send(news)
-};
 exports.getNewsById= async (req,res,next)=>{
     const news= await News.findById({_id:req.params.id})
     res.status(200).render('admin/edit-news',{

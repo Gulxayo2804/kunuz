@@ -40,13 +40,11 @@ router.get('/add', (req,res)=>{
         layout:'./admin/layout'
     })
 })
-router.post('/create',upload.single('image'), addNews)
 router.post('/add', upload.single('image'), createNews)
 router.patch('/edit/:id',upload.single('image'), newsUpdate)
 router.get('/all', getAll)
 router.get('/all/:id',getNewsById)
 router.get('/alls/:id',getNewsByTitle)
-router.get('/last', newsByDate)
 router.delete('/delete/:id',  deleteNews)
 
 module.exports=router
