@@ -1,4 +1,5 @@
 const express=require('express')
+const Category= require('../models/Category')
 const router=express.Router()
 const {protect,}=require('../middleware/auth')
 const { superAdmin, admin}=require('../middleware/admin')
@@ -35,8 +36,10 @@ const storage=multer.diskStorage({
 
 const upload= multer({storage:storage})
 
-router.get('/add', (req,res)=>{
+router.get('/add', async (req,res, next)=>{
+    const category= await Category.find()
     res.render('admin/news-page', {
+        data:category,
         layout:'./admin/layout'
     })
 })

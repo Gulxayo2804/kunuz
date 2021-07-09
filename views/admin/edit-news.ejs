@@ -26,22 +26,26 @@
                                             <form method="POST" class="form-horizontal m-t-30" enctype="multipart/form-data" action="<%=`/new/edit/${data._id}?_method=PATCH`%>">
                                             <div class="form-group row">
                                                 <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
-                                                <div class="col-sm-10"><input class="form-control" type="text" name="title"  value="<%= data.title%>"  id="example-text-input">
+                                                <div class="col-sm-10"><input class="form-control" type="text" name="title"  value="<%= data.news.title%>"  id="example-text-input">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="example-text-input" class="col-sm-2 col-form-label">Description</label>
-                                                <div class="col-sm-10"><input class="form-control" type="text" name="description" value="<%= data.description%>"  id="example-text-input">
+                                                <div class="col-sm-10"><input class="form-control" type="text" name="description" value="<%= data.news.description%>"  id="example-text-input">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="example-text-input" class="col-sm-2 col-form-label">CategoryId</label>
-                                                <div class="col-sm-10"><input class="form-control" type="text" name="categoryID" value="<%= data.categoryID%>" id="example-text-input">
-                                                </div>
+                                                <label for="example-text-input" class="col-sm-2 col-form-label">CategoryID</label>
+                                                <select class="col-sm-2"  id="example-text-input" name="categoryID" >
+                                                    <% for(item of data.category) {%>
+                                                        <% console.log(data.news.categoryID)%>
+                                                    <option class="form-control" value="<%= data.news.categoryID%>"><%= item.name%></option>
+                                                    <% }%>
+                                                </select>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="example-text-input" class="col-sm-2 col-form-label">Image</label>
-                                                <div class="col-sm-10"><input class="form-control-file border" type="file" name="image" value=""  id="input-files">
+                                                <div class="col-sm-10"><input class="form-control-file border" type="file" name="image" value="<%= data.news.image%>"  id="input-files">
                                                 </div>
                                             </div>
                                             <div class="form-group mb-0">

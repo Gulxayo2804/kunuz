@@ -30,9 +30,10 @@ exports.getAll=async (req,res,next)=>{
 
 
 exports.getNewsById= async (req,res,next)=>{
+    const category= await Category.find()
     const news= await News.findById({_id:req.params.id})
     res.status(200).render('admin/edit-news',{
-        data:news,
+        data:{news, category},
         layout:'./admin/layout'
     })
 };
@@ -55,10 +56,10 @@ exports.newsUpdate=async(req,res,next)=>{
     news.image=`/public/uploads/${req.file.filename}`
     await news.save()
     .then(()=>{
-        res.status(200).redirect('/new/all')
+       return  res.status(200).redirect('/new/all')
     })
     .catch((err)=>{
-        res.status(500).redirect(`/new/all/${news._id}`)
+      return res.status(500).redirect(`/new/all/${news._id}`)
     })
 }
 
