@@ -23,7 +23,7 @@
                                 <div class="col-12">
                                     <div class="card m-b-30">
                                         <div class="card-body">
-                                            <form method="POST" class="form-horizontal m-t-30" enctype="multipart/form-data" action="<%=`/new/edit/${data._id}?_method=PATCH`%>">
+                                            <form method="POST" class="form-horizontal m-t-30" enctype="multipart/form-data" action="<%=`/new/edit/${data.news._id}?_method=PATCH`%>">
                                             <div class="form-group row">
                                                 <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
                                                 <div class="col-sm-10"><input class="form-control" type="text" name="title"  value="<%= data.news.title%>"  id="example-text-input">
@@ -36,13 +36,9 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label for="example-text-input" class="col-sm-2 col-form-label">CategoryID</label>
-                                                <select class="col-sm-2" 
-                                                 id="example-text-input" 
-                                                 name="categoryID" 
-                                                 >
+                                                <select class="col-sm-2"  id="example-text-input" name="categoryID" >
                                                     <% for(item of data.category) {%>
-                                                        <% console.log(item._id)%>
-                                                    <option class="form-control"  value="<%= item._id%>"><%= item.name%></option>
+                                                    <option class="form-control" value="<%= item._id%>"><%= item.name%></option>
                                                     <% }%>
                                                 </select>
                                             </div>

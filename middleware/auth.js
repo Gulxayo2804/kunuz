@@ -18,16 +18,3 @@ exports.protect= (req,res,next)=>{
         res.status(400).send("Yaroqsiz token")
     }
 }
-
-
-
-// exports.authorize = (...roles) => {
-//     return (req, res, next) => {
-//         this.protect(req, res, next);
-//         if (!req.user || !roles.includes(req.user.role)) {
-//             return res.status(403).json({ message: "Access denied" })
-//         }
-//         next();
-//     }
-// }
-

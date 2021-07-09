@@ -14,7 +14,6 @@ const storage=multer.diskStorage({
     },
     filefilter:(req,file, cb, err)=>{
         var file= req.file.filename
-        var ext= path.extname(file.originalname)
         var error_msg= error  instanceof multer.MulterError;
         if(file===undefined){
             req.fileValidationError= "Not file";
