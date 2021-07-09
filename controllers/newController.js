@@ -2,12 +2,15 @@ const News=require('../models/news')
 const Category= require('../models/Category')
 
 exports.createNews=async (req,res,next)=>{
+    
+  try {
     const news=new News({
         title:req.body.title,
         description:req.body.description,
         categoryID:req.body.categoryID,
         image:`/public/uploads/${req.file.filename}`
     })
+
     //file qushmasa server qotib qolyapdi
     await news.save()
     .then(()=>{
@@ -16,6 +19,9 @@ exports.createNews=async (req,res,next)=>{
     .catch((err)=>{
         res.status(500).redirect('/new/add')
     })
+  } catch (error) {
+    res.status(500).redirect('/new/add')
+  }
 }
 
 exports.getAll=async (req,res,next)=>{
@@ -60,6 +66,15 @@ exports.newsUpdate=async(req,res,next)=>{
     })
     .catch((err)=>{
       return res.status(500).redirect(`/new/all/${news._id}`)
+    })
+}
+
+exports.getByCategoryID = async (req,res,next)=>{
+    const result = await News.find({categoryID:req.params.categoryID})
+    .sort({date:-1})
+    res.status(200).json({
+        success:true,
+        data:result
     })
 }
 
