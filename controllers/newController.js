@@ -2,13 +2,13 @@ const News=require('../models/news')
 const Category= require('../models/Category')
 
 exports.createNews=async (req,res,next)=>{
+  try {
     const news=new News({
         title:req.body.title,
         description:req.body.description,
         categoryID:req.body.categoryID,
         image:`/public/uploads/${req.file.filename}`
     })
-    //file qushmasa server qotib qolyapdi
     await news.save()
     .then(()=>{
         res.redirect('/new/all')
@@ -16,83 +16,79 @@ exports.createNews=async (req,res,next)=>{
     .catch((err)=>{
         res.status(500).redirect('/new/add')
     })
+  } catch (error) {
+    res.status(500).redirect('/new/add')
+  }
 }
 
 exports.getAll=async (req,res,next)=>{
+    try {
     const news= await News.find()
-        .populate('categoryID')
-        .limit(12)
-    res.status(200).render('news',{
-        data:news,
-        layout:'./layout'
-    })
+    .populate('categoryID',{name:1})
+    .limit(12)
+res.status(200).render('admin/news',{
+    data:news,
+    layout:'./admin/layout'
+})
+    } catch (error) {
+        res.status(500).redirect('/new/all')
+    }
 };
 
 
-exports.newsByDate= async (req,res,next)=>{
-    const news= await News.find()
-        .populate('categoryID')
-        .limit(6)
-        .sort({date:-1})
-        .select({image:1, title:1})
-    res.status(200).send(news)
-};
 exports.getNewsById= async (req,res,next)=>{
-    const news= await News.findById({_id:req.params.id})
-    res.status(200).render('edit-news',{
-        data:news,
-        layout:'./layout'
-    })
+    try {
+        const category= await Category.find()
+        const news= await News.findById({_id:req.params.id})
+        res.status(200).render('admin/edit-news',{
+            data:{news, category},
+            layout:'./admin/layout'
+        })
+        
+    } catch (error) {
+        res.status(500).redirect('/new/all')
+    }
 };
 
 exports.getNewsByTitle= async (req,res,next)=>{
-    const news= await News.findById({_id:req.params.id})
-    const result= await News.find()
-    const category=await Category.find()
-    res.status(200).render('news-page',{
-        data:{news, result, category},
-        layout:'./user'
-    })
+    try {
+        const news= await News.findById({_id:req.params.id})
+        const result= await News.find()
+        const category=await Category.find()
+        res.status(200).render('page/news-page',{
+            data:{news, result, category},
+            layout:'./page/user'
+        })
+        
+    } catch (error) {
+        res.status(500).redirect('/')
+    }
 };
 
+
 exports.newsUpdate=async(req,res,next)=>{
-    const news=await News.findByIdAndUpdate({_id:req.params.id})
-    news.title=req.body.title,
-    news.description=req.body.description,
-    news.categoryID=req.body.categoryID
-    news.image=`/public/uploads/${req.file.filename}`
-    await news.save()
-    .then(()=>{
-        res.status(200).redirect('/new/all')
-    })
-    .catch((err)=>{
-        res.status(500).redirect(`/new/all/${news._id}`)
-    })
+    try {
+        const news=await News.findByIdAndUpdate({_id:req.params.id})
+        news.title=req.body.title,
+        news.description=req.body.description,
+        news.categoryID=req.body.categoryID
+        news.image=`/public/uploads/${req.file.filename}`
+        await news.save()
+        .then(()=>{
+             res.status(200).redirect('/new/all')
+        })
+        .catch((err)=>{
+         res.status(500).redirect(`/new/all/${news._id}`)
+        })
+    } catch (error) {
+           res.status(500).redirect(`/new/all/${news._id}`)
+    }
 }
 
-exports.editnew = async(req,res)=>{
-    const news = await News.findByIdAndUpdate({_id:req.params.id})
-    news.title = req.body.title,
-    news.description = req.body.description,
-    user.categoryID = req.body.categoryID
-    news.save()
-    .then(()=>{
-        res.status(200).json({
-            success:true,
-            data:user
-        })
-    })
-    .catch((err)=>{
-        res.status(500).json({
-            success:false,
-            data:err
-        })
-    })
-   }
 
 exports.deleteNews = async(req,res,next)=>{
     await News.findByIdAndDelete({_id:req.params.id},(err,data)=>{
-        if(err) throw err
+        if(err) throw err;
         res.status(200).redirect('/new/all')
     })
 }

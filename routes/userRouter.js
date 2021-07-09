@@ -1,21 +1,21 @@
 const express=require('express')
 const router=express.Router()
-const { createUser, login, getMe, deleteUser, editUser, getAll, getElementById }=require('../controllers/userController')
+const { createUser, login, getMe, deleteUser, 
+    editUser, getAll, getElementById }=require('../controllers/userController')
 
 router.get('/add', (req,res,next)=>{
-    res.render('user-page',{
-        layout:'./layout'
+    res.render('admin/user-page',{
+        layout:'./admin/layout'
     })
 })
 
 
 router.get('/login',(req,res,next)=>{
-    res.render('pages-login',{
-        layout:'./layout'
+    res.render('admin/pages-login',{
+        layout:'./admin/login'
     })
 })
 
-// router.get('/all', getAll)
 router.post('/add', createUser)
 router.get('/:id', getElementById)
 router.post('/login', login)

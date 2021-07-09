@@ -1,0 +1,84 @@
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="page-title-box">
+                            <div class="row align-items-center">
+                                <div class="col-sm-6">
+                                    <h4 class="page-title">All Categories</h4>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ol class="breadcrumb float-right">
+                                        <li class="breadcrumb-item"><a href="javascript:void(0);">Stexo</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript:void(0);">Categories</a></li>
+                                        <li class="breadcrumb-item active">Edit</li>
+                                    </ol>
+                                </div>
+                            </div> <!-- end row -->
+                        </div>
+                        <!-- end page-title -->
+
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card m-b-30">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col" colspan="2">Date</th>
+                                                    </tr>
+                                                </thead>
+                                                <% for(item of data) {%>
+                                                <tbody> 
+                                                    <tr>
+                                                        <td><%= item.name%></td>
+                                                        <td><%= item.createdAt.toLocaleDateString()%></td>
+    
+                                                        <td>
+                                                            <div>
+                                                                <a href= "/category/add" class="btn btn-primary btn-sm">Create</a>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                <a href= "/category/all/<%= `${item._id}`%>" class="btn btn-primary btn-sm">Edit</a>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <form method="POST"  action="<%=`/category/delete/${item._id}?_method=DELETE`%>" >
+                                                            <div>
+                                                                <a><button class="btn btn-primary btn-sm"> Delete</button></a>
+                                                            </div>
+                                                        </form>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                                <% } %>
+                                            </table>
+                                            
+                                        </div>
+    
+                                    </div>
+                                </div>
+                            </div>
+    
+                        </div>
+
+                        <!-- END ROW -->
+                    </div>
+                    <!-- container-fluid -->
+
+                </div>
+                <!-- content -->
+
+            </div>
+                <!-- END ROW -->

@@ -1,0 +1,67 @@
+
+                <div class="content-page">
+                    <!-- Start content -->
+                    <div class="content">
+                        <div class="container-fluid">
+                            <div class="page-title-box">
+                                <div class="row align-items-center">
+                                    <div class="col-sm-6">
+                                        <h4 class="page-title">News Elements</h4>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ol class="breadcrumb float-right">
+                                            <li class="breadcrumb-item"><a href="javascript:void(0);">Stexo</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript:void(0);">News</a></li>
+                                            <li class="breadcrumb-item active">News Elements</li>
+                                        </ol>
+                                    </div>
+                                </div> <!-- end row -->
+                            </div>
+                            <!-- end page-title -->
+    
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card m-b-30">
+                                        <div class="card-body">
+                                            <form method="POST" class="form-horizontal m-t-30" enctype="multipart/form-data" action="<%=`/new/edit/${data.news._id}?_method=PATCH`%>">
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
+                                                <div class="col-sm-10"><input class="form-control" type="text" name="title"  value="<%= data.news.title%>"  id="example-text-input">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-sm-2 col-form-label">Description</label>
+                                                <div class="col-sm-10"><input class="form-control" type="text" name="description" value="<%= data.news.description%>"  id="example-text-input">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-sm-2 col-form-label">CategoryID</label>
+                                                <select class="col-sm-2"  id="example-text-input" name="categoryID" >
+                                                    <% for(item of data.category) {%>
+                                                    <option class="form-control" value="<%= item._id%>"><%= item.name%></option>
+                                                    <% }%>
+                                                </select>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-sm-2 col-form-label">Image</label>
+                                                <div class="col-sm-10"><input class="form-control-file border" type="file" name="image" value="<%= data.news.image%>"  id="input-files">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-0">
+                                                <a><button class="btn btn-primary waves-effect waves-light" id="alertify-max-log-items" type="submit" >EDIT</button></a>
+                                         </form>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                </div> <!-- end col -->
+                            </div> <!-- end row -->      
+    
+                            
+                        </div>
+                        <!-- container-fluid -->
+    
+                    </div>
+    
+                </div>
+              

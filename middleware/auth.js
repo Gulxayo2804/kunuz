@@ -3,9 +3,11 @@ const jwt=require('jsonwebtoken')
 const secret=require('../config/secret')
 
 exports.protect= (req,res,next)=>{
-    let token=req.headers.authorization.split(' ')[1];
+    let token;
+    token=req.headers.authorization;
+    console.log(token);
     if(!token){
-        res.status(401).send("Token bo'lmaganligi sababli routerga kirish huquqi yo'q")
+       return res.status(401).redirect('/user/login') 
     }
     try {
         const decoded=jwt.verify(token, secret.JWT_SECRET)
@@ -16,16 +18,3 @@ exports.protect= (req,res,next)=>{
         res.status(400).send("Yaroqsiz token")
     }
 }
-
-
-
-// exports.authorize = (...roles) => {
-//     return (req, res, next) => {
-//         this.protect(req, res, next);
-//         if (!req.user || !roles.includes(req.user.role)) {
-//             return res.status(403).json({ message: "Access denied" })
-//         }
-//         next();
-//     }
-// }
-
