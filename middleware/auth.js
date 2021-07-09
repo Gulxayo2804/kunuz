@@ -3,9 +3,11 @@ const jwt=require('jsonwebtoken')
 const secret=require('../config/secret')
 
 exports.protect= (req,res,next)=>{
-    let token=req.headers.authorization.split(' ')[1];
+    let token;
+    token=req.headers.authorization;
+    console.log(token);
     if(!token){
-        res.status(401).send("Token bo'lmaganligi sababli routerga kirish huquqi yo'q")
+       return res.status(401).redirect('/user/login') 
     }
     try {
         const decoded=jwt.verify(token, secret.JWT_SECRET)

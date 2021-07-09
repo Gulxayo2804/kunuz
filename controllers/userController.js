@@ -64,12 +64,6 @@ exports.getElementById=async (req,res,next)=>{
 
 exports.deleteUser = async (req,res,next)=>{
     await User.findByIdAndDelete({_id:req.params.id})
-
-    res.status(200).json({
-        success:true,
-        data:[]
-    })
-
     res.status(200).redirect('/admin')
 }
 
@@ -80,20 +74,10 @@ exports.editUser = async(req,res,next)=>{
     user.name = req.body.name,
     user.email = req.body.email,
     user.role=req.body.role,
-    user.password =req.body.password
-     user.save()
+    user.password =password
+    await user.save()
     .then(()=>{
-     res.status(200).json({
-         success:true,
-         data:user
-         })
-    })
-    .catch((err)=>{
-     res.status(500).json({
-         success:false,
-         data:err
-      })
-     res.status(200).redirect('/admin')
+        res.status(200).redirect('/admin')
     })
     .catch((err)=>{
      res.status(500).redirect(`/user/${user._id}`)

@@ -1,17 +1,16 @@
 
     
-
         <div class="row">
           <!-- o'ng qism -->
           <div class="col-md-9">
             <div class="row">
               <div class="col-md-6">
-                <a href="#">
+                <a href="<%= `/new/alls/${data.news[0]._id}`%>">
                   <img style="width: 100%;" src="<%= data.news[0].image%>" alt=""></a>
               </div>
               <div class="col-md-6 bg-light">
-                <p class="text-muted m-3" style="font-size:15px;"><%= data.news[0].createdAt%></p>
-                <a href="#">
+                <p class="text-muted m-3" style="font-size:15px;"><%= data.news[0].createdAt.toLocaleDateString()%></p>
+                <a href="<%= `/new/alls/${data.news[0]._id}`%>">
                   <h2 class="m-3 bg-light text-dark " style="font-size: 23px;">
                     <%= data.news[0].title%></h2>
               </div>
@@ -21,11 +20,11 @@
               <div class="col-md-6">
                 <div class="row">
                   <div class="col-md-6">
-                    <a href="#"><img class="p-3"  style="width: 100%;" src="<%= data.news[1].image%>" alt=""></a>
+                    <a href="<%= `/new/alls/${data.news[1]._id}`%>"><img class="p-3"  style="width: 100%;" src="<%= data.news[1].image%>" alt=""></a>
                   </div>
                   <div class="col-md-6 ">
-                    <p class="text-muted m-3" style="font-size:15px;"><%= data.news[1].createdAt%></p>
-                    <a href="#">
+                    <p class="text-muted m-3" style="font-size:15px;"><%= data.news[1].createdAt.toLocaleDateString()%></p>
+                    <a href="<%= `/new/alls/${data.news[1]._id}`%>">
                       <p class="  text-dark" style="font-size: 15px;"><%= data.news[1].title%></p></a>
                   </div>
                 </div>
@@ -34,11 +33,11 @@
               <div class="col-md-6">
                 <div class="row">
                   <div class="col-md-6">
-                    <a href="#"><img class="p-3" style="width: 100%;" src="<%= data.news[2].image%>" alt=""></a>
+                    <a href="<%= `/new/alls/${data.news[2]._id}`%>"><img class="p-3" style="width: 100%;" src="<%= data.news[2].image%>" alt=""></a>
                   </div>
                   <div class="col-md-6 ">
-                    <p class="text-muted m-3" style="font-size:15px;"><%= data.news[2].createdAt%></p>
-                    <a href="#">
+                    <p class="text-muted m-3" style="font-size:15px;"><%= data.news[2].createdAt.toLocaleDateString()%></p>
+                    <a href="<%= `/new/alls/${data.news[2]._id}`%>">
                       <p class=" text-dark" style="font-size: 15px;"><%= data.news[2].title%></p></a>
                   </div>
                 </div>
@@ -49,11 +48,11 @@
               <div class="col-md-6">
                 <div class="row">
                   <div class="col-md-6">
-                    <a href="#"><img class="p-3"  style="width: 100%;" src="<%= data.news[3].image%>" alt=""></a>
+                    <a href="<%= `/new/alls/${data.news[3]._id}`%>"><img class="p-3"  style="width: 100%;" src="<%= data.news[3].image%>" alt=""></a>
                   </div>
                   <div class="col-md-6 ">
-                    <p class="text-muted m-3" style="font-size:15px;"><%= data.news[3].createdAt%></p>
-                    <a href="#">
+                    <p class="text-muted m-3" style="font-size:15px;"><%= data.news[3].createdAt.toLocaleDateString()%></p>
+                    <a href="<%= `/new/alls/${data.news[3]._id}`%>">
                       <p class="  text-dark" style="font-size: 15px;"> <%= data.news[3].title%>
 </p></a>
                   </div>
@@ -63,11 +62,11 @@
               <div class="col-md-6">
                 <div class="row">
                   <div class="col-md-6">
-                    <a href="#"><img class="p-3" style="width: 100%;" src="<%= data.news[4].image%>" alt=""></a>
+                    <a href="<%= `/new/alls/${data.news[4]._id}`%>"><img class="p-3" style="width: 100%;" src="<%= data.news[4].image%>" alt=""></a>
                   </div>
                   <div class="col-md-6 ">
-                    <p class="text-muted m-3" style="font-size:15px;"><%= data.news[4].createdAt%></p>
-                    <a href="#">
+                    <p class="text-muted m-3" style="font-size:15px;"><%= data.news[4].createdAt.toLocaleDateString()%></p>
+                    <a href="<%= `/new/alls/${data.news[4]._id}`%>">
                       <p class=" text-dark" style="font-size: 15px;"><%= data.news[4].title%></p></a>
                   </div>
                 </div>
@@ -97,11 +96,11 @@
           </div>
           <!-- saidbar -->
           <div class="col-md-3">
-            <div class="blokk  border-bottom">
+            <div class="blokk  border-bottom"> 
                 <!-- <div><div class="bloc bg-dark border rounded-circle" style="width: 18px; height: 18px;"></div></div> -->
                 <div > <a href="#"><h2 class="m-3  text-dark " style="font-size: 23px;">Сўнгги янгиликлар</h2></a></div>
                 <% for(item of data.last) {%>
-            <p class="text-muted m-3" style="font-size:15px;"><%= item.createdAt%></p>
+            <p class="text-muted m-3" style="font-size:15px;"><%= item.createdAt.toTimeString().split(" ")[0]%></p>
             <a href="<%= `/new/alls/${item._id}`%>"><p  class=" m-3  text-dark" style="font-size: 18px;"><%= item.title%></p></a>
                   <%}%>
           </div>
@@ -118,7 +117,7 @@
           <button type="button" class="btn btn-dark border rounded-pill mt-5 p-3  px-4">Apple Story</button>
         </div>
       </div>
-    </div>
+      </div>
 
 
 

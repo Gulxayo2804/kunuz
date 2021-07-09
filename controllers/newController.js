@@ -2,12 +2,15 @@ const News=require('../models/news')
 const Category= require('../models/Category')
 
 exports.createNews=async (req,res,next)=>{
+    
+  try {
     const news=new News({
         title:req.body.title,
         description:req.body.description,
         categoryID:req.body.categoryID,
         image:`/public/uploads/${req.file.filename}`
     })
+
     //file qushmasa server qotib qolyapdi
     await news.save()
     .then(()=>{
@@ -16,11 +19,14 @@ exports.createNews=async (req,res,next)=>{
     .catch((err)=>{
         res.status(500).redirect('/new/add')
     })
+  } catch (error) {
+    res.status(500).redirect('/new/add')
+  }
 }
 
 exports.getAll=async (req,res,next)=>{
     const news= await News.find()
-        .populate('categoryID')
+        .populate('categoryID',{name:1})
         .limit(12)
     res.status(200).render('admin/news',{
         data:news,
@@ -29,14 +35,6 @@ exports.getAll=async (req,res,next)=>{
 };
 
 
-exports.newsByDate= async (req,res,next)=>{
-    const news= await News.find()
-        .populate('categoryID')
-        .limit(6)
-        .sort({date:-1})
-        .select({image:1, title:1})
-    res.status(200).send(news)
-};
 exports.getNewsById= async (req,res,next)=>{
     const news= await News.findById({_id:req.params.id})
     res.status(200).render('admin/edit-news',{

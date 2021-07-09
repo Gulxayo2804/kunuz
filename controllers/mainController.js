@@ -7,7 +7,7 @@ exports.getall=async (req,res,next)=>{
         .limit(15)
     const last=await News.find()
         .limit(5)
-        .sort({date:-1})
+        .sort({createdAt:-1})
     const category= await Category.find()
     res.status(200).render('page/kun',{
         data:{news,category,last},
