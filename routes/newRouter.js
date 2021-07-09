@@ -47,7 +47,6 @@ router.post('/add', upload.single('image'), createNews)
 router.patch('/edit/:id',upload.single('image'), newsUpdate)
 router.get('/all', getAll)
 router.get('/all/:id',getNewsById)
-//router.get('/byCategory/:categoryID', getByCategoryID);
 router.get('/alls/:id',getNewsByTitle)
 router.delete('/delete/:id',  deleteNews)
 
