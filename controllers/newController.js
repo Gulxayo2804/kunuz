@@ -70,6 +70,15 @@ exports.newsUpdate=async(req,res,next)=>{
     })
 }
 
+exports.getByCategoryID = async (req,res,next)=>{
+    const result = await News.find({categoryID:req.params.categoryID})
+    .sort({date:-1})
+    res.status(200).json({
+        success:true,
+        data:result
+    })
+}
+
 
 exports.deleteNews = async(req,res,next)=>{
     await News.findByIdAndDelete({_id:req.params.id},(err,data)=>{

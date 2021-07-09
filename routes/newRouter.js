@@ -5,7 +5,7 @@ const { superAdmin, admin}=require('../middleware/admin')
 const md5=require('md5')
 const multer=require('multer')
 const path=require('path')
-const {createNews, getAll, getNewsByTitle, getNewsById, newsByDate,newsUpdate,deleteNews}=require('../controllers/newController')
+const {createNews, getAll, getNewsByTitle, getNewsById, newsByDate,newsUpdate,deleteNews,getByCategoryID}=require('../controllers/newController')
 
 const storage=multer.diskStorage({
     destination: (req, file, cb)=>{
@@ -28,6 +28,7 @@ router.post('/add', upload.single('image'), createNews)
 router.patch('/edit/:id',upload.single('image'), newsUpdate)
 router.get('/all', getAll)
 router.get('/all/:id',getNewsById)
+router.get('/byCategory/:categoryID', getByCategoryID);
 router.get('/alls/:id',getNewsByTitle)
 router.get('/last', newsByDate)
 router.delete('/delete/:id',  deleteNews)
