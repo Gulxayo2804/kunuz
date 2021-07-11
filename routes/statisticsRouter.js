@@ -1,7 +1,6 @@
 const router=require('express').Router()
-const {protect}=require('../middleware/auth')
-const {admin, superAdmin}= require('../middleware/admin')
+const {isAuth}= require('../middleware/auth')
 const {userNumber}=require('../controllers/statistics')
 
-router.get('/', userNumber)
+router.get('/', isAuth, userNumber)
 module.exports=router

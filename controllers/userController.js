@@ -15,13 +15,15 @@ exports.createUser = async (req,res)=>{
             password:password
         })
         await result.save()
-        .then(()=>{
-            res.redirect('/admin')
+        const accessToken= createAccessToken({id:result._id})
+        const refreshToken= createRefreshToken({id:result._id})
+        res.cookie('ascces_token', refreshToken, {
+            httpOnly:true,
+            path:'/user/logout',
+            maxAge: 7*24*60*60*1000 //7day
         })
-        .catch((error)=>{
-            res.status(500).redirect('/user/add')
-        })
-        
+        res.redirect('/admin')
+       
     } catch (error) {
         res.status(500).redirect('/user/add')
     }
@@ -44,9 +46,15 @@ exports.login = async (req,res,next)=>{
             if(!bcrypt.compareSync(req.body.password, user.password)){
                return  res.status(401).redirect('/user/login')
             }
-            let token;
-            let payload = {id:user._id,roles:user.role}
-            token = jwt.sign(payload, secret.JWT_SECRET);
+            const accessToken=createAccessToken({id:user._id})
+            const refreshtoken=createRefreshToken({id:user._id})
+            console.log(refreshtoken)
+            res.cookie('ascces_token', refreshtoken, {
+                httpOnly:true,
+                path:'/user/logout',
+                maxAge: 7*24*60*60*1000 //7d
+            })
+
             res.redirect('/admin')
         })
         
@@ -114,3 +122,9 @@ exports.editUser = async(req,res,next)=>{
     }
 }
 
+const createAccessToken=(user)=>{
+    return jwt.sign(user, secret.JWT_SECRET)
+}
+const createRefreshToken=(user)=>{
+    return jwt.sign(user, secret.JWT_SECRET)
+}

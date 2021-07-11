@@ -1,5 +1,6 @@
 const express=require('express')
 const router=express.Router()
+const {isAuth}= require('../middleware/auth')
 const { createUser, login, getMe, deleteUser, 
     editUser, getAll, getElementById }=require('../controllers/userController')
 
@@ -16,11 +17,11 @@ router.get('/login',(req,res,next)=>{
     })
 })
 
-router.post('/add', createUser)
-router.get('/:id', getElementById)
+router.post('/add',isAuth, createUser)
+router.get('/:id',isAuth, getElementById)
 router.post('/login', login)
 router.get('/getme', getMe)
-router.delete('/delete/:id',deleteUser)
-router.patch('/edit/:id',editUser)
+router.delete('/delete/:id',isAuth, deleteUser)
+router.patch('/edit/:id',isAuth, editUser)
 
 module.exports=router

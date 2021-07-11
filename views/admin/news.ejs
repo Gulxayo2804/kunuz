@@ -6,7 +6,7 @@
                         <div class="page-title-box">
                             <div class="row align-items-center">
                                 <div class="col-sm-6">
-                                    <h4 class="page-title">All News</h4>
+                                    <h4 class="page-title">All News   <a href= "/new/add" class="btn btn-primary btn-sm">Create</a></h4>
                                 </div>
                                 <div class="col-sm-6">
                                     <ol class="breadcrumb float-right">
@@ -46,12 +46,6 @@
                                                         </td>
                                                         <td><span ><%= item.categoryID.name%></span></td>
                                                         <td><%= item.createdAt.toLocaleString()%></td>
-    
-                                                        <td>
-                                                            <div>
-                                                                <a href= "/new/add" class="btn btn-primary btn-sm">Create</a>
-                                                            </div>
-                                                        </td>
                                                         <td>
                                                             <div>
                                                                     <a href= "/new/all/<%= `${item._id}`%>" class="btn btn-primary btn-sm">Edit</a>

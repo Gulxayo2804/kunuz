@@ -3,12 +3,13 @@ const app=express();
 const bodyParser=require(`body-parser`)
 const PORT=5000;
 const connectDB=require('./config/config')
-const urlencodedParser=bodyParser.urlencoded({extended:false})
 const ejs=require('ejs')
+const cookieParser=require('cookie-parser')
 const path=require('path').join(__dirname,('public/uploads'))
 const layouts=require('express-ejs-layouts');
 connectDB()
 app.use(layouts)
+app.use(cookieParser())
 const cors=require('cors')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());

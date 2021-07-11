@@ -12,7 +12,7 @@
                         <div class="page-title-box">
                             <div class="row align-items-center">
                                 <div class="col-sm-6">
-                                    <h4 class="page-title">All Categories</h4>
+                                    <h4 class="page-title">All Categories  <a href= "/category/add" class="btn btn-primary btn-sm">Create</a></h4>
                                 </div>
                                 <div class="col-sm-6">
                                     <ol class="breadcrumb float-right">
@@ -42,12 +42,6 @@
                                                     <tr>
                                                         <td><%= item.name%></td>
                                                         <td><%= item.createdAt.toLocaleDateString()%></td>
-    
-                                                        <td>
-                                                            <div>
-                                                                <a href= "/category/add" class="btn btn-primary btn-sm">Create</a>
-                                                            </div>
-                                                        </td>
                                                         <td>
                                                             <div>
                                                                 <a href= "/category/all/<%= `${item._id}`%>" class="btn btn-primary btn-sm">Edit</a>
