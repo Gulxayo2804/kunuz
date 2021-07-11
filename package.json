@@ -4,19 +4,22 @@
   "description": "Jamoa bo'lib kun.uz ni yasaymiz",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
+  "engines": {"node": "14.16.1"},
   "author": "Node Js Team",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.1",
     "fs": "0.0.1-security",
+    "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",
     "md5": "^2.3.0",
     "method-override": "^3.0.0",

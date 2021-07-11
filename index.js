@@ -7,6 +7,8 @@ const ejs=require('ejs')
 const cookieParser=require('cookie-parser')
 const path=require('path').join(__dirname,('public/uploads'))
 const layouts=require('express-ejs-layouts');
+const helmet = require('helmet');
+const Compression = require('compression');
 connectDB()
 app.use(layouts)
 app.use(cookieParser())
@@ -15,6 +17,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 app.use(cors())
 app.use(express.static('public'))
+app.use(helmet());
+app.use(Compression());
 app.use('/public/uploads', express.static(path))
 const methodOverride = require('method-override');
 app.use(methodOverride("_method", {
